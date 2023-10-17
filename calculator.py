@@ -28,4 +28,3 @@ def get_selection():
   if selection not in (1, 2, 3, 4):
     raise ValueError
   return selection
-
