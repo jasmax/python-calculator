@@ -25,4 +25,3 @@ elif selection == 3:
 elif selection == 4:
   value = divide(num1, num2)
 
-print(f"========\nThe calculation is: {value}")

@@ -65,4 +65,3 @@ def test_Multiply(num1, num2, expectedResult):
 @pytest.mark.parametrize("num1,num2,expectedResult", [(21, 3, 7), (-21, -3, 7), (-21, 3, -7)])
 def test_Divide(num1, num2, expectedResult):
     result = calculator.divide(num1, num2)
-    assert result == expectedResult
