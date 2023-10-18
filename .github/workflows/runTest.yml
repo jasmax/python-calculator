@@ -24,8 +24,17 @@ jobs:
           run: |
             pip install flake8 pytest pytest-cov        
         
-        - name: Download testvfile
-          run: curl https://github.com/jasmax/helloworld-python/blob/main/test_Calculator.py -o test_Calculator.py
+        #- name: Download testvfile
+        #  run: curl https://github.com/jasmax/helloworld-python/blob/main/test_Calculator.py -o test_Calculator.py
+
+        - name: Checkout peer repo
+          uses: actions/checkout@v2
+          with:
+            repository: jasmax/helloworld-python
+
+        - name: list own contents
+          run: |
+            ls
 
         - name: Run tests
           run: |
