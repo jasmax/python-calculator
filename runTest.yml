@@ -14,12 +14,19 @@ jobs:
         - name: Checkout own Repo
           uses: actions/checkout@v2
           with:
-            repository: jasmax/python-calculator
+            python-version: 3.11
 
         - name: list own contents
           run: |
-            ls     
+            ls
+
+        - name: Install Libraries
+          run: |
+            pip install flake8 pytest pytest-cov        
         
+        #- name: Download testvfile
+        #  run: curl https://github.com/jasmax/helloworld-python/blob/main/test_Calculator.py -o test_Calculator.py
+
         - name: Checkout peer repo
           uses: actions/checkout@v2
           with:
@@ -29,15 +36,6 @@ jobs:
           run: |
             ls
 
-        - name: Create virtual environment
-          run: |
-            python3 -m venv venv
-
-        - name: Install Libraries
-          run: |
-            source venv/bin/activate
-            pip install flake8 pytest pytest-cov 
-            
         - name: Run tests
           run: |
             pytest test_Calculator.py -v -cov --junitxml=report.xml
