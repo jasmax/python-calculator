@@ -38,10 +38,10 @@ jobs:
             source venv/bin/activate
             pip install flake8 pytest pytest-cov robotframework
             pip list
-            
+
         - name: Run tests
           run: |
-            pytest test_Calculator.py -v -cov --junitxml=report.xml
+            python -m pytest -v -cov --junitxml=report.xml
   
         - name: Publish Test Results
           uses: EnricoMi/publish-unit-test-result-action/composite@v2
