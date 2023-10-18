@@ -1,0 +1,33 @@
+name: Run Tests
+on:
+    push:
+        branches: [main]
+
+jobs:
+    run-Tests:
+
+        name: Run Tests
+
+        runs-on: Ubuntu-latest
+
+        steps:
+
+        - name: checkout test scripts
+          uses: actions/checkout@v2
+
+          with:
+            repository: jasmax/helloworld-python
+            token: ${{ secrets.GITHUB_TOKEN }}
+
+        - name: Run tests
+          run: |
+            pytest test.py -v -cov --junitxml=report.xml
+
+        - name: move files
+          run: mv *.xml ./downloads
+
+        - name: Upload document
+          uses: actions/upload-artifact@v2
+          with: 
+            name: assetDocuments
+            path: downloads
